@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mauसम - Weather Forecast</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="weather_icons/logo/web_logo.png">
+</head>
+<body>
+    <!-- Weather Bg -->
+    <div class="weather-bg"></div>
+    
+    <!-- Rain Canvas -->
+    <canvas id="rain-canvas"></canvas>
+
+    <!-- Loader -->
+    <div id="initial-loader" class="initial-loader">
+        <div class="loader-content">
+            <div class="loader-icon">
+                <i class="fas fa-cloud-sun"></i>
+            </div>
+            <div class="loader-text">
+                <span class="loader-title">Mau<span class="hindi-text">सम</span></span>
+                <span class="loader-subtitle">Loading your weather data...</span>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-cloud-sun"></i>
+                </div>
+                <div class="logo-text">
+                    Mau<span class="hindi-text">सम</span>
+                </div>
+            </div>
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+                <span>Dark Mode</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="city-input" placeholder="Enter city name...">
+                <i class="fas fa-search"></i>
+            </div>
+            <button class="btn" id="search-btn">
+                <i class="fas fa-search"></i>
+                <span>Search</span>
+            </button>
+            <button class="btn btn-location" id="location-btn">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Current Location</span>
+            </button>
+        </div>
+
+        <div class="error-message" id="error-container">
+            <i class="fas fa-exclamation-circle"></i>
+            <span id="error-message">Error message here</span>
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">
+            <i class="fas fa-spinner"></i>
+            <span>Loading weather data...</span>
+        </div>
+
+        <div id="weather-container" style="display: none;">
+            <div class="current-weather fade-in">
+                <h2 class="city-name" id="city-name">City Name</h2>
+                <div class="date" id="current-date">Monday, 12 May 2025</div>
+                <div class="weather-main">
+                    <div class="temperature" id="temperature">23°C</div>
+                    <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Weather icon" class="weather-icon" id="weather-icon">
+                </div>
+                <div class="weather-description" id="weather-description">Scattered Clouds</div>
+                <div class="weather-details">
+                    <div class="detail">
+                        <div class="detail-icon">
+                            <i class="fas fa-temperature-high"></i>
+                        </div>
+                        <div class="detail-label">Feels Like</div>
+                        <div class="detail-value" id="feels-like">25°C</div>
+                    </div>
+                    <div class="detail">
+                        <div class="detail-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="detail-label">Humidity</div>
+                        <div class="detail-value" id="humidity">65%</div>
+                    </div>
+                    <div class="detail">
+                        <div class="detail-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <div class="detail-label">Wind Speed</div>
+                        <div class="detail-value" id="wind-speed">5.2 m/s</div>
+                    </div>
+                    <div class="detail">
+                        <div class="detail-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <div class="detail-label">Pressure</div>
+                        <div class="detail-value" id="pressure">1012 hPa</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="forecast-title">5-Day Forecast</h2>
+            <div class="forecast-container" id="forecast-container">
+                <!-- Forecast cards will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Weather Games -->
+        <div class="games-section">
+            <h2 class="section-title">Weather Games</h2>
+            <div class="games-container">
+                <div class="game-card" id="memory-game">
+                    <div class="game-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Mau<span class="hindi-text">सम</span> Memory</h3>
+                    <p>Match weather symbols and test your memory!</p>
+                    <button class="btn play-btn" onclick="startMemoryGame()">Play Now</button>
+                </div>
+                
+                <div class="game-card" id="word-scramble">
+                    <div class="game-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3>Mau<span class="hindi-text">सम</span> Word Scramble</h3>
+                    <p>Unscramble weather-related words!</p>
+                    <button class="btn play-btn" onclick="startWordScramble()">Play Now</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p> Powered by <a href="https://openweathermap.org/" target="_blank" rel="noopener">OpenWeatherMap API</a></p>
+    </footer>
+
+    <script src="rain.js"></script>
+    <script src="games.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
