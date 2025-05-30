@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: mauसम
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn server:app
+    envVars:
+      - key: OPENWEATHERMAP_API_KEY
+        sync: false
