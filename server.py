@@ -73,7 +73,7 @@ def get_forecast():
         else:
             return jsonify({'error': 'Failed to fetch forecast data'}), response.status_code
             
-    except Exception e:
+    except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
