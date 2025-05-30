@@ -1,37 +1,25 @@
+# 🌦️ Mauसम – Weather Forecast Web App
 
----
-
-## 🌦️ **README – Weather Forecast App**
-
-```markdown
-# 🌦️ Weather Forecast App
-
-A Python application that fetches and displays real-time weather data using the OpenWeatherMap API. Built with a clean interface and extra features like 5-day forecasts and location-based weather updates.
+A modern, interactive weather forecast web application that provides real-time weather data, a 5-day forecast, and fun weather-themed games. Built with HTML, CSS, and JavaScript, and powered by the OpenWeatherMap API.
 
 ---
 
 ## 🚀 Features
 
-- 🔍 Search weather by city name
-- 📍 Auto-detect user location (using `geocoder`)
-- 🕐 Real-time temperature, humidity, wind speed
-- 🌤️ Weather condition icons
-- 📅 5-day forecast view
-- 🌓 Dark/Light mode toggle *(Optional)*
+- 🔍 **Search by City Name:** Instantly get weather updates for any city.
+- 📍 **Current Location Weather:** Auto-detects your location and shows local weather.
+- 🌡️ **Real-Time Data:** Displays temperature, humidity, wind speed, and pressure.
+- 🌤️ **Weather Icons:** Visual weather conditions using OpenWeatherMap icons.
+- 📅 **5-Day Forecast:** See upcoming weather trends at a glance.
+- 🌓 **Dark/Light Mode:** Toggle between beautiful dark and light themes.
+- 🎮 **Weather Games:** Enjoy built-in games like Memory and Word Scramble with weather themes.
+- ⚡ **Responsive Design:** Works great on desktop and mobile devices.
+
+## 🛠️ Tech Stack
+
+- **Frontend:** HTML, CSS, JavaScript (Vanilla)
+- **APIs:** [OpenWeatherMap API](https://openweathermap.org/)
+- **Icons:** Font Awesome, OpenWeatherMap icons
+- **Fonts:** Google Fonts (Noto Sans Devanagari)
 
 ---
-
-## 📦 Tech Stack
-
-**Desktop Version:**
-- Python
-- `tkinter` 
-- `requests`, `geocoder`, `datetime`
-
-**Web Version (optional):**
-- Flask
-- HTML/CSS
-- OpenWeatherMap API
-
----
-
