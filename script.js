@@ -1,6 +1,3 @@
-// API key for OpenWeatherMap
-const API_KEY = 'af4449386893999d3c0e3dba7128eaa1';
-
 const cityInput = document.getElementById('city-input');
 const searchBtn = document.getElementById('search-btn');
 const locationBtn = document.getElementById('location-btn');
@@ -79,12 +76,13 @@ locationBtn.addEventListener('click', () => {
 async function getWeatherByCity(city) {
     showLoading();
     try {
-        // Get current weather
-        const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+        // Use backend proxy endpoint
+        const currentWeatherUrl = `/weather?city=${encodeURIComponent(city)}`;
         const currentWeatherResponse = await fetch(currentWeatherUrl);
         
         if (!currentWeatherResponse.ok) {
-            throw new Error('City not found');
+            const errorData = await currentWeatherResponse.json();
+            throw new Error(errorData.error || 'City not found');
         }
         
         const currentWeatherData = await currentWeatherResponse.json();
@@ -103,12 +101,13 @@ async function getWeatherByCity(city) {
 async function getWeatherByCoordinates(lat, lon) {
     showLoading();
     try {
-        // Get current weather
-        const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+        // Use backend proxy endpoint
+        const currentWeatherUrl = `/weather?lat=${lat}&lon=${lon}`;
         const currentWeatherResponse = await fetch(currentWeatherUrl);
         
         if (!currentWeatherResponse.ok) {
-            throw new Error('Failed to fetch weather data');
+            const errorData = await currentWeatherResponse.json();
+            throw new Error(errorData.error || 'Failed to fetch weather data');
         }
         
         const currentWeatherData = await currentWeatherResponse.json();
@@ -125,11 +124,13 @@ async function getWeatherByCoordinates(lat, lon) {
 // Get 5-day forecast data
 async function getForecast(lat, lon, currentWeatherData) {
     try {
-        const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+        // Use backend proxy endpoint
+        const forecastUrl = `/forecast?lat=${lat}&lon=${lon}`;
         const forecastResponse = await fetch(forecastUrl);
         
         if (!forecastResponse.ok) {
-            throw new Error('Failed to fetch forecast data');
+            const errorData = await forecastResponse.json();
+            throw new Error(errorData.error || 'Failed to fetch forecast data');
         }
         
         const forecastData = await forecastResponse.json();
@@ -188,7 +189,7 @@ function updateWeatherBackground(weatherCondition) {
         rainEffect.stop();
     }
     
-    // background will be as per the current weather condition
+    // Set background based on weather condition
     const weatherMap = {
         'clear': isDaytime ? 'clear-day' : 'clear-night',
         'clouds': isDaytime ? 'clouds-day' : 'clouds-night',
@@ -327,4 +328,4 @@ window.addEventListener('load', () => {
         // If geolocation not supported, load default city
         getWeatherByCity('London');
     }
-}); 
+});
